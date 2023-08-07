@@ -1,0 +1,101 @@
+.custom-background {
+  background: #7f7fd5; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #91eae4,
+    #86a8e7,
+    #7f7fd5
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #91eae4,
+    #86a8e7,
+    #7f7fd5
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+body {
+  font-family: "Bangers", cursive;
+  color: rgb(56, 55, 55);
+}
+.myContainer .col-4 {
+  padding: 0;
+}
+.cell {
+  height: 15vw; /* 15% of the viewport width */
+  width: 15vw; /* 15% of the viewport width */
+  font-size: 2em;
+}
+/* Adjust the font size for "X" and "O" symbols */
+
+.players {
+  font-size: 2.2em;
+}
+.textWinner {
+  font-size: 2.2em;
+}
+.cell1 {
+  border-right: 0.1em solid white;
+  border-bottom: 0.1em solid white;
+}
+.cell2 {
+  border-right: 0.1em solid white;
+  border-bottom: 0.1em solid white;
+}
+.cell3 {
+  border-bottom: 0.1em solid white;
+}
+.cell4 {
+  border-right: 0.1em solid white;
+}
+.cell5 {
+  border-right: 0.1em solid white;
+}
+.cell7 {
+  border-top: 0.1em solid white;
+  border-right: 0.1em solid white;
+}
+.cell8 {
+  border-top: 0.1em solid white;
+  border-right: 0.1em solid white;
+}
+.cell9 {
+  border-top: 0.1em solid white;
+}
+.btnNewGame {
+  font-size: 1.4em;
+}
+@media (max-width: 885px) {
+  .players {
+    font-size: 1.5em;
+  }
+  .textWinner {
+    font-size: 1.5em;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+}
+@media (max-width: 690px) {
+  .btnNewGame {
+    font-size: 1.2em;
+  }
+}
+@media (max-width: 510px) {
+  .btnNewGame {
+    font-size: 1em;
+  }
+}
+@media (max-width: 460px) {
+  .btnNewGame {
+    font-size: 0.8em;
+  }
+  .players {
+    font-size: 1.2em;
+  }
+  .textWinner {
+    font-size: 1.2em;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
+}
