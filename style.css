@@ -21,9 +21,9 @@ body {
   padding: 0;
 }
 .cell {
-  height: 15vw; /* 15% of the viewport width */
-  width: 15vw; /* 15% of the viewport width */
-  font-size: 2em;
+  height: 11vw; /* 15% of the viewport width */
+  width: 11vw; /* 15% of the viewport width */
+  font-size: 1.8em;
 }
 /* Adjust the font size for "X" and "O" symbols */
 
@@ -64,6 +64,7 @@ body {
 .btnNewGame {
   font-size: 1.4em;
 }
+
 @media (max-width: 885px) {
   .players {
     font-size: 1.5em;
