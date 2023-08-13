@@ -21,11 +21,10 @@ body {
   padding: 0;
 }
 .cell {
-  height: 11vw; /* 15% of the viewport width */
-  width: 11vw; /* 15% of the viewport width */
+  height: 11vw;
+  width: 11vw;
   font-size: 1.8em;
 }
-/* Adjust the font size for "X" and "O" symbols */
 
 .players {
   font-size: 2.2em;

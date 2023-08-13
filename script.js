@@ -1,7 +1,9 @@
+//Global variables (game state):
 let activePlayer;
 let scoreX = 0;
 let scoreO = 0;
 
+//Function updateScoresHtml will update scores of player 1 and player 2 in the html!
 const updateScoresHtml = (player1, player2) => {
   const playerXScore = document.getElementById("playerX");
   const playerYScore = document.getElementById("playerY");
@@ -9,6 +11,7 @@ const updateScoresHtml = (player1, player2) => {
   playerYScore.innerHTML = `player 2: ${player2}`;
 };
 
+//Function checkWinner - checks all the possibilities for winning
 const checkWinner = () => {
   const cells = document.querySelectorAll(".cell");
   let winner;
@@ -18,7 +21,7 @@ const checkWinner = () => {
     if (
       cells[i].innerHTML == cells[i + 3].innerHTML &&
       cells[i + 3].innerHTML == cells[i + 6].innerHTML &&
-      cells[i].innerHTML !== ""
+      cells[i].innerHTML
     ) {
       winner = cells[i].innerHTML;
     }
@@ -29,7 +32,7 @@ const checkWinner = () => {
     if (
       cells[i].innerHTML == cells[i + 1].innerHTML &&
       cells[i + 1].innerHTML == cells[i + 2].innerHTML &&
-      cells[i].innerHTML != ""
+      cells[i].innerHTML
     ) {
       winner = cells[i].innerHTML;
     }
@@ -41,7 +44,7 @@ const checkWinner = () => {
   if (
     cells[i].innerHTML == cells[i + 4].innerHTML &&
     cells[i + 4].innerHTML == cells[i + 8].innerHTML &&
-    cells[i].innerHTML != ""
+    cells[i].innerHTML
   ) {
     winner = cells[i].innerHTML;
   }
@@ -52,38 +55,40 @@ const checkWinner = () => {
   if (
     cells[i].innerHTML == cells[i + 2].innerHTML &&
     cells[i + 2].innerHTML == cells[i + 4].innerHTML &&
-    cells[i].innerHTML !== ""
+    cells[i].innerHTML
   ) {
     winner = cells[i].innerHTML;
   }
   //update scores
-  if (winner == "x") {
-    scoreX = scoreX + 1;
-  } else if (winner == "o") {
-    scoreO = scoreO + 1;
-  }
-
+  // if (winner == "x") {
+  //   scoreX = scoreX + 1;
+  // } else if (winner == "o") {
+  //   scoreO = scoreO + 1;
+  // }
+  winner === "x" ? scoreX++ : winner === "o" ? scoreO++ : null;
   const winnerText = document.getElementById("winnerText");
-  if (winner !== undefined) {
-    //check if there is winner
+  //Check if there is winner
+  if (winner) {
     winnerText.innerHTML = `${winner} won the game !`;
+
+    //Removing event listeners from the cells because there is winner and we don't want to to continue playing
     const cells = document.querySelectorAll(".cell");
     cells.forEach((cell) => cell.removeEventListener("click", handleClick));
   } else {
+    //If innerHTML of cells is empty no need to check, continue playing the game
     for (let cell of cells) {
-      //if innerHTML of cell is emoty no need to check, continue playing
-      if (cell.innerHTML == "") {
+      if (!cell.innerHTML) {
         return;
       }
     }
     winnerText.innerHTML = `no one won the game :(`;
   }
-
+  //and the end of game update scores of both players
   updateScoresHtml(scoreX, scoreO);
 };
 const handleClick = (e) => {
   const target = e.target;
-  if (target.innerHTML != "") {
+  if (target.innerHTML) {
     return;
   } else {
     target.innerHTML = activePlayer;
@@ -99,6 +104,7 @@ const initPage = () => {
   cells.forEach((cell) => cell.addEventListener("click", handleClick));
 };
 
+//Function new game declares "x" as the active player. All the cells must be empty when we start new game
 const newGame = (e) => {
   activePlayer = "x";
   const cells = document.querySelectorAll(".cell");
