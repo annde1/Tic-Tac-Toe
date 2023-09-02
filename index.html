@@ -10,65 +10,98 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="styles/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body class="custom-background">
-    <div class="container myContainer">
-      <h1 class="text-center mt-4">Tic Tac Toe</h1>
-      <div class="row justify-content-center mt-5">
-        <div
-          class="col-4 cell1 cell d-flex align-items-center justify-content-center"
-        ></div>
-        <div
-          class="col-4 cell2 cell d-flex align-items-center justify-content-center"
-        ></div>
-        <div
-          class="col-4 cell3 cell d-flex align-items-center justify-content-center"
-        ></div>
-      </div>
-      <div class="row justify-content-center">
-        <div
-          class="col-4 cell4 cell d-flex align-items-center justify-content-center"
-        ></div>
-        <div
-          class="col-4 cell5 cell d-flex align-items-center justify-content-center"
-        ></div>
-        <div
-          class="col-4 cell6 cell d-flex align-items-center justify-content-center"
-        ></div>
-      </div>
-      <div class="row justify-content-center">
-        <div
-          class="col-4 cell7 cell d-flex align-items-center justify-content-center"
-        ></div>
-        <div
-          class="col-4 cell8 cell d-flex align-items-center justify-content-center"
-        ></div>
-        <div
-          class="col-4 cell9 cell d-flex align-items-center justify-content-center"
-        ></div>
-      </div>
-      <div class="row justify-content-center mt-5">
-        <div class="col-12 text-center">
+    <div class="container-fluid myContainer">
+      <form class="custom-form d-flex flex-row my-form" id="formLogin">
+        <div class="mb-2 input1 flex-grow-1 me-3">
+          <label for="inputUsername" class="sr-only mb-1 mt-2">Email:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputEmail"
+            placeholder="Email"
+          />
+        </div>
+        <div class="mb-2 input2 flex-grow-1 me-3">
+          <label for="inputPassword" class="sr-only mb-1 mt-2">Password:</label>
+          <input
+            type="password"
+            class="form-control formInput"
+            id="inputPassword"
+            placeholder="Password"
+          />
+        </div>
+        <div class="mb-2 text-center loginBtn">
           <button
-            type="button"
-            class="btn btn-outline-dark btnNewGame"
-            id="btnNewGame"
+            type="submit"
+            class="btn btn-outline-dark loginBtn"
+            id="loginBtn"
           >
-            New Game
+            Login
           </button>
         </div>
-      </div>
-      <div class="row justify-content-center mt-5">
-        <div class="col-6 text-center players" id="playerX">Player 1:</div>
-        <div class="col-6 text-center players" id="playerY">Player 2:</div>
-      </div>
-      <div class="row justify-content-center mt-5">
-        <div class="col-12 text-center textWinner" id="winnerText"></div>
+      </form>
+      <p class="welcome-text" id="message">Login to start new game</p>
+
+      <div class="game-container hide-game">
+        <h1 class="text-center heading-game">Tic Tac Toe</h1>
+        <div class="row justify-content-center mt-5">
+          <div
+            class="col-4 cell1 cell d-flex align-items-center justify-content-center"
+          ></div>
+          <div
+            class="col-4 cell2 cell d-flex align-items-center justify-content-center"
+          ></div>
+          <div
+            class="col-4 cell3 cell d-flex align-items-center justify-content-center"
+          ></div>
+        </div>
+        <div class="row justify-content-center">
+          <div
+            class="col-4 cell4 cell d-flex align-items-center justify-content-center"
+          ></div>
+          <div
+            class="col-4 cell5 cell d-flex align-items-center justify-content-center"
+          ></div>
+          <div
+            class="col-4 cell6 cell d-flex align-items-center justify-content-center"
+          ></div>
+        </div>
+        <div class="row justify-content-center">
+          <div
+            class="col-4 cell7 cell d-flex align-items-center justify-content-center"
+          ></div>
+          <div
+            class="col-4 cell8 cell d-flex align-items-center justify-content-center"
+          ></div>
+          <div
+            class="col-4 cell9 cell d-flex align-items-center justify-content-center"
+          ></div>
+        </div>
+        <div class="row justify-content-center mt-5">
+          <div class="col-12 text-center">
+            <button
+              type="button"
+              class="btn btn-outline-dark btnNewGame"
+              id="btnNewGame"
+            >
+              New Game
+            </button>
+          </div>
+        </div>
+        <div class="row justify-content-center mt-5">
+          <div class="col-6 text-center players" id="playerX">Player 1:</div>
+          <div class="col-6 text-center players" id="playerY">Player 2:</div>
+        </div>
+        <div class="row justify-content-center mt-5">
+          <div class="col-12 text-center textWinner" id="winnerText"></div>
+        </div>
       </div>
     </div>
 
@@ -77,6 +110,7 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-    <script src="script.js"></script>
+    <script src="script/players.js"></script>
+    <script src="script/script.js"></script>
   </body>
 </html>
