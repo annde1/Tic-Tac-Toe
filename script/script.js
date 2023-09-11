@@ -1,7 +1,7 @@
 //Global variables (game state):
 let activePlayer;
 
-//Function updateScoresHtml will update scores of player 1 and player 2 in the html!
+//Function updateScoresHtml will update scores of player 1 and player 2 in the html
 const updateScoresHtml = (username, player1, player2) => {
   const playerXScore = document.getElementById("playerX");
   const playerYScore = document.getElementById("playerY");
@@ -61,7 +61,7 @@ const checkWhoWon = () => {
 
   return winner;
 };
-
+// Function terminateGame will handle the end of the game and update scores.
 const terminateGame = (winner) => {
   if (winner == "x") {
     activeUser.scoreX = activeUser.scoreX + 1;
@@ -85,7 +85,7 @@ const terminateGame = (winner) => {
   cells.forEach((cell) => cell.removeEventListener("click", handleClick));
 };
 
-// checkEmptyCells will return true if there are no empty cells
+// Function checkEmptyCells will return true if there are no empty cells left on the board
 const checkEmptyCells = () => {
   const cells = document.querySelectorAll(".cell");
   for (let cell of cells) {
@@ -96,41 +96,45 @@ const checkEmptyCells = () => {
   return true;
 };
 
-// handleTurn will return true to terminate the game or false to continue
+// Function handleTurn will return true to terminate the game or false to continue
 const handleTurn = () => {
-  // Gets the winner
+  // Check if there is a winner or if the board is full
   let winner = checkWhoWon();
   let noEmptyCells = checkEmptyCells();
 
   if (winner || noEmptyCells) {
+    // If the game ended, call terminateGame to update scores and display results
     terminateGame(winner);
-    activeUser.save();
-    return true;
+    activeUser.save(); //Save user data
+    return true; // Return true to indicate the game has ended
   }
-
-  return false;
+  return false; // Return false to continue the game
 };
 
-// handleTurn will return true if the game ended, otherwise it will return false
+// Function handleRound will handle a round of the game (human and computer moves)
 const handleRound = () => {
-  // Human played....
+  // Check if the game ended after the human player's move
   if (handleTurn()) {
-    return;
+    return; // Return early if the game ended
   }
-
+  // Make a move for the computer player
   computerPlayer.computerMove();
+  // Check if the game ended after the computer player's move
   handleTurn();
 };
-
+// Function handleClick handles the human player's move when clicking a cell
 const handleClick = (e) => {
   const target = e.target;
+  // Check if the cell is already occupied
   if (target.innerHTML) {
     return;
   } else {
+    // Place the active player's mark in the clicked cell
     target.innerHTML = activePlayer;
   }
-  //switch active player
+  // Switch the active player ('X' to 'O' or vice versa)
   activePlayer = activePlayer == "x" ? "o" : "x";
+  // Handle the next round of the game
   handleRound();
 };
 
@@ -140,14 +144,14 @@ const initPage = () => {
   cells.forEach((cell) => cell.addEventListener("click", handleClick));
 };
 
-//Function new game declares "x" as the active player. All the cells must be empty when we start new game
+// Function newGame starts a new game by resetting the board and scores
 const newGame = (e) => {
   activePlayer = "x";
   const cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => (cell.innerHTML = ""));
   cells.forEach((cell) => cell.addEventListener("click", handleClick));
 };
-
+/// Function startGame initiates the game and sets up event listeners
 const startGame = () => {
   const gameArea = document.querySelector(".game-container");
   gameArea.classList.remove("hide-game");

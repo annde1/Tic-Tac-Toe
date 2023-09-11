@@ -1,4 +1,5 @@
 let activeUser;
+// Class User represents a user with a username, email, and scores
 class User {
   username;
   email;
@@ -11,6 +12,7 @@ class User {
     this.scoreO = 0;
     this.isLoggedIn = false;
   }
+  // Method login checks if the provided email and password match the user's credentials
 
   login(email, password) {
     if (this.email == email && this.#password == password) {
@@ -20,13 +22,15 @@ class User {
       return false;
     }
   }
+  // Method displayMessage updates a message area with a welcome message
+
   displayMessage(username) {
     const messageArea = document.getElementById("message");
     messageArea.textContent = `Welcome, ${username}`;
     const scoreTitle = document.querySelector("#playerX");
     scoreTitle.innerText = `${username}:`;
   }
-
+  // Method save stores the user's scores in local storage
   save() {
     let obj = {
       username: this.username,
@@ -36,6 +40,7 @@ class User {
     const str = JSON.stringify(obj);
     localStorage.setItem(`${this.username}`, str);
   }
+  // Method load retrieves the user's scores from local storage
   load() {
     let obj = JSON.parse(localStorage.getItem(`${this.username}`));
     if (!obj) {
@@ -45,6 +50,7 @@ class User {
     this.scoreO = obj.scoreO;
     updateScoresHtml(obj.username, this.scoreX, this.scoreO);
   }
+  // Methods to increase scores for 'X' and 'O'
   icreaseScoreX() {
     this.scoreX = this.scoreX + 1;
   }
@@ -54,6 +60,7 @@ class User {
 }
 
 class Computer {
+  // Method computerMove makes a random move for the computer player ('O')
   computerMove() {
     let emptyCellsArray = [...document.querySelectorAll(".cell")].filter(
       (cell) => cell.innerHTML === ""
@@ -68,16 +75,16 @@ class Computer {
     activePlayer = activePlayer == "x" ? "o" : "x";
   }
 }
-
+// Initialize the computer player
 let computerPlayer = new Computer();
+// Create user objects with email, password, and username
 let users = [
-  new User("annadepta61@gmail.com", "1234", "annde"),
   new User("jamesbond@gmail.com", "5555", "jamesb"),
   new User("johnwick@gmail.com", "67676", "johnw"),
-  new User("shlomo@hackeru.gmail.com", "191919", "shlomoU"),
   new User("janedoe@gmail.com", "121212", "janed"),
   new User("michaeljackson@gmail.com", "0000", "michaelj"),
 ];
+// Event listener for page load
 
 window.addEventListener("load", () => {
   const form = document.querySelector("#formLogin");
