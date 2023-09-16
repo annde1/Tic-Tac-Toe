@@ -159,10 +159,9 @@ body {
     right: 1rem;
   }
 }
-
-@media screen and (max-width: 275px) {
+@media screen and (max-width: 318px) {
   .welcome-text {
     top: 5rem;
-    left: 6rem;
+    left: 4rem;
   }
 }
